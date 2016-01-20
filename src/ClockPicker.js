@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
-import { Overlay, Popover, Input, Glyphicon } from 'react-bootstrap';
+import { OverlayTrigger, Popover, Input, Glyphicon } from 'react-bootstrap';
 require('./bootstrap-clockpicker.css');
 
 const CP_EDITING = {
@@ -127,42 +127,45 @@ export default class ClockPicker extends Component {
       }
     }
 
+    const popover = (
+      <Popover id="clockpicker" className="clockpicker-popover" title={title}>
+        <div className="clockpicker-plate">
+          <div className="clockpicker-canvas">
+            { hand }
+          </div>
+          { this.state.editing === CP_EDITING.HOURS ?
+          <div className="clockpicker-dial clockpicker-hours">
+            { hourTicks }
+          </div> :
+          <div className="clockpicker-dial clockpicker-minutes" style={{visibility: 'visible'}}>
+            { minuteTicks }
+          </div>
+          }
+        </div>
+      </Popover>
+    );
+
     return (
       <div>
-        <Input 
-          type="text"
-          ref="target"
-          className="clockpicker"
-          disabled={disabled}
-          value={leadingZero(hours) + ':' + leadingZero(minutes)}
-          onChange={() => false} // TODO
-          onClick={startEditing}
-          addonBefore={addonBefore}
-          addonAfter={<Glyphicon glyph="time" onClick={startEditing} />} />
-        <Overlay
+        <OverlayTrigger
+          trigger="click"
           placement={placement}
           animation={false}
           show={this.state.editing !== CP_EDITING.NOT_EDITING}
           rootClose={true}
           onHide={() => this.setState({ editing: CP_EDITING.NOT_EDITING })}
-          container={this}
-          target={() => findDOMNode(this.refs.target)}>
-          <Popover id="clockpicker" className="clockpicker-popover" title={title}>
-            <div className="clockpicker-plate">
-              <div className="clockpicker-canvas">
-                { hand }
-              </div>
-              { this.state.editing === CP_EDITING.HOURS ?
-              <div className="clockpicker-dial clockpicker-hours">
-                { hourTicks }
-              </div> :
-              <div className="clockpicker-dial clockpicker-minutes" style={{visibility: 'visible'}}>
-                { minuteTicks }
-              </div>
-              }
-            </div>
-          </Popover>
-        </Overlay>
+          overlay={popover}>
+          <Input
+            type="text"
+            ref="target"
+            className="clockpicker"
+            disabled={disabled}
+            value={leadingZero(hours) + ':' + leadingZero(minutes)}
+            onChange={() => false} // TODO
+            onClick={startEditing}
+            addonBefore={addonBefore}
+            addonAfter={<Glyphicon glyph="time" onClick={startEditing} />} />
+        </OverlayTrigger>
       </div>
     );
   }
