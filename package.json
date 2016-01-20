@@ -13,7 +13,7 @@
   "style": "dist/ClockPicker.css",
   "repository": {
     "type": "git",
-    "url": "https://github.com/frontsideair/react-clockpicker.git"
+    "url": "git+https://github.com/frontsideair/react-clockpicker.git"
   },
   "keywords": [
     "react",
@@ -48,6 +48,7 @@
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^1.0.1",
+    "react-overlays": "^0.6.0",
     "rimraf": "^2.4.3",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
@@ -58,5 +59,8 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-bootstrap": "^0.28.2"
+  },
+  "directories": {
+    "example": "examples"
   }
 }
