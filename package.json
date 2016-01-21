@@ -1,6 +1,6 @@
 {
   "name": "react-clockpicker",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React port of Clockpicker widget",
   "scripts": {
     "clean": "rimraf dist",
