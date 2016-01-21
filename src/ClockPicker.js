@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
-import { OverlayTrigger, Popover, Input, Glyphicon } from 'react-bootstrap';
+import { Overlay, Popover, Input, Glyphicon } from 'react-bootstrap';
 require('./bootstrap-clockpicker.css');
 
 const CP_EDITING = {
@@ -13,6 +13,8 @@ export default class ClockPicker extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      hours: props.hours,
+      minutes: props.minutes,
       editing: CP_EDITING.NOT_EDITING
     };
   }
@@ -33,8 +35,15 @@ export default class ClockPicker extends Component {
     disabled: false
   };
 
+  componentWillReceiveProps({ hours, minutes }) {
+    if (this.state.editing === CP_EDITING.NOT_EDITING) {
+      this.setState({ hours, minutes });
+    }
+  }
+
   render() {
-    const { hours, minutes, onChange, placement, addonBefore, disabled } = this.props;
+    const { onChange, placement, addonBefore, disabled } = this.props;
+    const { hours, minutes } = this.state;
 
     let hourTicks = [],
       minuteTicks = [];
@@ -73,10 +82,7 @@ export default class ClockPicker extends Component {
         <div
           key={'hour_' + text}
           className="clockpicker-tick"
-          onClick={() => {
-            this.setState({ editing: CP_EDITING.MINUTES })
-            onChange(i, minutes)
-          }}
+          onClick={() => this.setState({ editing: CP_EDITING.MINUTES, hours: i })}
           style={{left, top, fontSize: inner ? '120%' : '100%'}}>
           {text}
         </div>
@@ -94,7 +100,7 @@ export default class ClockPicker extends Component {
           key={'minute_' + text}
           className="clockpicker-tick"
           onClick={() => {
-            this.setState({ editing: CP_EDITING.NOT_EDITING })
+            this.setState({ editing: CP_EDITING.NOT_EDITING, minutes: i })
             onChange(hours, i)
           }}
           style={{left, top, fontSize: '120%'}}>
@@ -147,25 +153,30 @@ export default class ClockPicker extends Component {
 
     return (
       <div>
-        <OverlayTrigger
-          trigger="click"
+        <Input
+          type="text"
+          ref="target"
+          className="clockpicker"
+          disabled={disabled}
+          value={leadingZero(hours) + ':' + leadingZero(minutes)}
+          onChange={() => false} // TODO
+          onClick={startEditing}
+          addonBefore={addonBefore}
+          addonAfter={<Glyphicon glyph="time" onClick={startEditing} />} />
+        <Overlay
           placement={placement}
           animation={false}
           show={this.state.editing !== CP_EDITING.NOT_EDITING}
           rootClose={true}
-          onHide={() => this.setState({ editing: CP_EDITING.NOT_EDITING })}
-          overlay={popover}>
-          <Input
-            type="text"
-            ref="target"
-            className="clockpicker"
-            disabled={disabled}
-            value={leadingZero(hours) + ':' + leadingZero(minutes)}
-            onChange={() => false} // TODO
-            onClick={startEditing}
-            addonBefore={addonBefore}
-            addonAfter={<Glyphicon glyph="time" onClick={startEditing} />} />
-        </OverlayTrigger>
+          container={document.body}
+          target={() => findDOMNode(this.refs.target)}
+          onHide={() => this.setState({
+            editing: CP_EDITING.NOT_EDITING,
+            hours: this.props.hours,
+            minutes: this.props.minutes
+          })} >
+          {popover}
+        </Overlay>
       </div>
     );
   }
