@@ -16,6 +16,7 @@ Then require ClockPicker and don't forget to include `bootstrap.min.css` and pro
 
 ## Roadmap
 
+- [ ] Better documentation
 - [ ] Have validation states
 - [ ] Use direct text input
 - [ ] Github pages example
