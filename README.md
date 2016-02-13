@@ -24,6 +24,7 @@ Then require ClockPicker and don't forget to include `bootstrap.min.css` and pro
 - [ ] Remove `react-bootstrap` dependency
 - [ ] Dismiss button
 - [ ] AM/PM selection
+- [ ] Transition effects
 
 ## License
 
