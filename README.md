@@ -21,7 +21,8 @@ Then require ClockPicker and don't forget to include `bootstrap.min.css` and pro
 - [ ] Github pages example
 - [ ] Support dragging cursor while selecting time
 - [ ] Remove `react-bootstrap` dependency
-- [ ] ...think of more features to add
+- [ ] Dismiss button
+- [ ] AM/PM selection
 
 ## License
 
