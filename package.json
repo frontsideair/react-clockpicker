@@ -1,6 +1,6 @@
 {
   "name": "react-clockpicker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React port of Clockpicker widget",
   "author": "Fatih Altinok <fatihaltinok@live.com> (http://github.com/frontsideair)",
   "license": "MIT",
