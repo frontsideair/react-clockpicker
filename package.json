@@ -25,6 +25,7 @@
   ],
   "peerDependencies": {
     "react": "15.x",
+    "react-dom": "15.x",
     "react-bootstrap": "^0.28.5"
   },
   "devDependencies": {
@@ -43,8 +44,10 @@
     "eventsource-polyfill": "0.9.6",
     "express": "4.13.3",
     "extract-text-webpack-plugin": "1.0.1",
+    "react": "15.x",
+    "react-dom": "15.x",
+    "react-bootstrap": "^0.28.5",
     "react-overlays": "0.6.0",
-    "react-dom": "^15.1.0",
     "rimraf": "2.4.3",
     "style-loader": "0.13.0",
     "webpack": "1.12.9",
