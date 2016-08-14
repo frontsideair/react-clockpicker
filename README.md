@@ -2,17 +2,32 @@
 
 React port of [Wang Shenwei](https://github.com/weareoutman)'s excellent [ClockPicker](https://github.com/weareoutman/clockpicker) widget.
 
-## Demo
-
-Coming soon!
-
 ## Installation
 
 ```
-npm install react-clockpicker
+npm install --save react-clockpicker
 ```
 
-Then require ClockPicker and don't forget to include `bootstrap.min.css` and provided `bootstrap-clockpicker.css`.
+## Usage
+
+```
+# Import using ES6 modules
+import ClockPicker from 'react-clockpicker'
+
+# Import using CommonJS modules
+var ClockPicker = require('react-clockpicker')
+
+# Use the component
+<ClockPicker
+  hours={hours}
+  minutes={minutes}
+  disabled={false}
+  placement="right
+  addonBefore={...}
+  onChange={(hours, minutes) => this.setState({ hours, minutes })} />
+```
+
+You need to have `bootstrap.min.js` and `react-clockpicker.css` on the page too.
 
 ## Roadmap
 
@@ -21,7 +36,7 @@ Then require ClockPicker and don't forget to include `bootstrap.min.css` and pro
 - [ ] Use direct text input
 - [ ] Github pages example
 - [ ] Support dragging cursor while selecting time
-- [ ] Remove `react-bootstrap` dependency
+- [ ] Remove `react-bootstrap` dependency?
 - [ ] Dismiss button
 - [ ] AM/PM selection
 - [ ] Transition effects

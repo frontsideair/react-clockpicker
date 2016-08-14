@@ -4,12 +4,12 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: [
-    './src/ClockPicker'
+    './src/react-clockpicker'
   ],
   output: {
     libraryTarget: "umd",
-    library: "ClockPicker",
-    filename: 'ClockPicker.js',
+    library: "react-clockpicker",
+    filename: 'react-clockpicker.js',
     path: "./dist/"
   },
   plugins: [
@@ -24,29 +24,29 @@ module.exports = {
         warnings: false
       }
     }),
-    new ExtractTextPlugin("ClockPicker.css")
+    new ExtractTextPlugin("react-clockpicker.css")
   ],
   module: {
     loaders: [
       { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
-      { test: /\.css/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") }
+      { test: /\.css/, loader: ExtractTextPlugin.extract("style", "css") }
     ]
   },
   externals: [
-    {
-      "react-dom": {
-        root: "ReactDOM",
-        commonjs2: "react-dom",
-        commonjs: "react-dom",
-        amd: "react-dom"
-      }
-    },
     {
       "react": {
         root: "React",
         commonjs2: "react",
         commonjs: "react",
         amd: "react"
+      }
+    },
+    {
+      "react-dom": {
+        root: "ReactDOM",
+        commonjs2: "react-dom",
+        commonjs: "react-dom",
+        amd: "react-dom"
       }
     },
     {

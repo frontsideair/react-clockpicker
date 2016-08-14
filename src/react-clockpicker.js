@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import { Overlay, Popover, Input, Glyphicon } from 'react-bootstrap';
-require('./bootstrap-clockpicker.css');
+import './react-clockpicker.css';
 
 const CP_EDITING = {
   NOT_EDITING: 0,
