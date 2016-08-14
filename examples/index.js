@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import ClockPicker from '../src/ClockPicker';
-require('../src/bootstrap-clockpicker.css');
+import ClockPicker from '../src/react-clockpicker';
+require('../src/react-clockpicker.css');
 
 class App extends Component {
   constructor(props) {
