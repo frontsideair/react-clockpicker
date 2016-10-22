@@ -4,13 +4,13 @@ React port of [Wang Shenwei](https://github.com/weareoutman)'s excellent [ClockP
 
 ## Installation
 
-```
+``` sh
 npm install --save react-clockpicker
 ```
 
 ## Usage
 
-```
+``` javascript
 # Import using ES6 modules
 import ClockPicker from 'react-clockpicker'
 
@@ -22,7 +22,7 @@ var ClockPicker = require('react-clockpicker')
   hours={hours}
   minutes={minutes}
   disabled={false}
-  placement="right
+  placement="right"
   addonBefore={...}
   onChange={(hours, minutes) => this.setState({ hours, minutes })} />
 ```
