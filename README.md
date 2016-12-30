@@ -27,7 +27,7 @@ var ClockPicker = require('react-clockpicker')
   onChange={(hours, minutes) => this.setState({ hours, minutes })} />
 ```
 
-You need to have `bootstrap.min.js` and `react-clockpicker.css` on the page too.
+You need to have `bootstrap.min.css` and `react-clockpicker.css` on the page too.
 
 ## Roadmap
 
