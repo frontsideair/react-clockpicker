@@ -2,6 +2,8 @@
 
 React port of [Wang Shenwei](https://github.com/weareoutman)'s excellent [ClockPicker](https://github.com/weareoutman/clockpicker) widget.
 
+> This repo is no longer maintained. Requests to take over are welcome.
+
 ## Installation
 
 ``` sh
